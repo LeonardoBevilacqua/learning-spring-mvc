@@ -5,7 +5,7 @@
 >
   <body>
     <main id="content">
-      <a href="/create">Adicionar novo produto</a>
+      <a href="/create">🆕 Adicionar novo produto</a>
 
       <table border="1">
         <thead>
@@ -30,7 +30,7 @@
               <div
                 th:replace="~{fragments/delete-form :: deleteForm(id=${product.id})}"
               ></div>
-              <a th:href="@{'/update/' + ${product.id}}">Editar</a>
+              <a th:href="@{'/update/' + ${product.id}}">📝 Editar</a>
             </td>
           </tr>
         </tbody>
