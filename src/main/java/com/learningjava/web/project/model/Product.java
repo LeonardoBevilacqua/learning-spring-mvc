@@ -15,6 +15,17 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name = "products")
 public class Product {
 
+  public Product() {
+    // default constructor
+  }
+
+  // Builder constructor
+  private Product(Builder builder) {
+    this.name = builder.name;
+    this.description = builder.description;
+    this.price = builder.price;
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
@@ -83,5 +94,30 @@ public class Product {
 
   public void setModifiedAt(Date modifiedAt) {
     this.modifiedAt = modifiedAt;
+  }
+
+  public static class Builder {
+    private String name;
+    private String description;
+    private float price;
+
+    public Builder setName(String name) {
+      this.name = name;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      this.description = description;
+      return this;
+    }
+
+    public Builder setPrice(float price) {
+      this.price = price;
+      return this;
+    }
+
+    public Product build() {
+      return new Product(this);
+    }
   }
 }
