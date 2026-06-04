@@ -1,0 +1,62 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aprendendo Java MVC</title>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Aprendendo Java MVC</h1>
+    <hr />
+    <h2>Produtos</h2>
+
+    <main>
+      <a href="/">Voltar</a>
+
+      <fieldset>
+        <legend th:text="${legend} ?: 'Novo Produto'">Novo Produto</legend>
+        <form th:action="${product}? '/update' : '/create'" method="post">
+          <div>
+            <label for="name">Nome</label>
+            <br />
+            <input type="hidden" name="id" th:value="${product?.id}" />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              th:value="${product?.name}"
+              required
+            />
+          </div>
+          <div>
+            <label for="description">Descrição</label>
+            <br />
+            <textarea
+              rows="4"
+              cols="50"
+              name="description"
+              id="description"
+              th:text="${product?.description}"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <label for="price">Preço</label>
+            <br />
+            <input
+              type="number"
+              name="price"
+              id="price"
+              required
+              min="1"
+              th:value="${product?.price}"
+            />
+          </div>
+
+          <button type="submit">Salvar</button>
+        </form>
+      </fieldset>
+    </main>
+  </body>
+</html>

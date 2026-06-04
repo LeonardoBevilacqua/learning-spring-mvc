@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,6 +7,41 @@
     <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
-    <h1>Hello world</h1>
+    <h1>Aprendendo Java MVC</h1>
+    <hr />
+    <h2>Produtos</h2>
+
+    <main>
+      <a href="/create">Adicionar novo produto</a>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:if="${products == null or products.isEmpty()}">
+            <td colspan="5">Nenhum produto cadastrado!</td>
+          </tr>
+          <tr th:each="product : ${products}">
+            <td th:text="${product.id}">ID</td>
+            <td th:text="${product.name}">Nome</td>
+            <td th:text="${product.description}">Descrição</td>
+            <td>R$ <span th:text="${product.price}">Preço</span></td>
+            <td style="display: flex; gap: 0.5rem">
+              <div
+                th:replace="~{fragments/delete-form :: deleteForm(id=${product.id})}"
+              ></div>
+              <a th:href="@{'/update/' + ${product.id}}">Editar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
   </body>
 </html>
