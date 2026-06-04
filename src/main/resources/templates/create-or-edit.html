@@ -1,17 +1,10 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Aprendendo Java MVC</title>
-    <link href="css/style.css" rel="stylesheet" />
-  </head>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{layouts/base :: layout(content=~{::#content})}"
+>
   <body>
-    <h1>Aprendendo Java MVC</h1>
-    <hr />
-    <h2>Produtos</h2>
-
-    <main>
+    <main id="content">
       <a href="/">Voltar</a>
 
       <fieldset>

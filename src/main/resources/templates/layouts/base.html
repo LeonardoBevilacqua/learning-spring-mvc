@@ -1,0 +1,17 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aprendendo Java MVC</title>
+    <link href="/css/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <h1>Aprendendo Java MVC</h1>
+    <hr />
+    <h2>Produtos</h2>
+
+    <main th:replace="${content}"></main>
+  </body>
+</html>
